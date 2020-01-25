@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {all} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-game-control',
@@ -28,5 +27,8 @@ export class GameControlComponent implements OnInit {
 
   OnPauseGame() {
     clearInterval(this.interval);
+    this.oddNum.splice(0);
+    this.evenNum.splice(0);
+    this.lastnumber = 0;
   }
 }
