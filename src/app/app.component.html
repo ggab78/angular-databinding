@@ -15,8 +15,10 @@
         <p>
           <button class="btn btn-primary" (click)="onChange(i)">change</button>
           <button class="btn btn-danger" (click)="onDestroy(i)">destroy</button>
+          <span #contentElement>
           <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
           <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </span>
         </p>
       </app-server-element>
     </div>

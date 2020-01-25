@@ -2,7 +2,7 @@ import {
   AfterContentChecked,
   AfterContentInit, AfterViewChecked,
   AfterViewInit,
-  Component,
+  Component, ContentChild,
   DoCheck, ElementRef,
   Input,
   OnChanges, OnDestroy,
@@ -15,11 +15,15 @@ import {
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.css']
 })
-export class ServerElementComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+
+export class ServerElementComponent implements OnInit, OnChanges,
+  DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
+  AfterViewChecked, OnDestroy {
   @Input('srvElement') element: { type: string, name: string, content: string };
   @Input() name: string;
   @Input() content: string;
   @ViewChild('heading', {static: true}) header: ElementRef;
+  @ContentChild('contentElement', {static: true}) contentElement: ElementRef;
 
   constructor() {
     console.log('constructor log');
@@ -36,6 +40,8 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
 
   ngAfterContentInit() {
     console.log('afterContentInit');
+    // contentElement is @ContentChild so available after ContentInit , here shall not be visible
+    console.log('Content Element : ' + this.contentElement.nativeElement.textContent);
   }
 
   ngAfterContentChecked() {
@@ -44,8 +50,10 @@ export class ServerElementComponent implements OnInit, OnChanges, DoCheck, After
 
   ngOnInit() {
     console.log('onInit log');
-    // header is @VieChild so available after ViewInit , here shall not be visible
+    // header is @ViewChild so available after ViewInit , here shall not be visible
     console.log('Text Content : ' + this.header.nativeElement.textContent);
+    // contentElement is @ContentChild so available after ContentInit , here shall not be visible
+    console.log('Content Element : ' + this.contentElement.nativeElement.textContent);
   }
 
   ngAfterViewInit() {
