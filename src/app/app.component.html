@@ -23,4 +23,13 @@
       </app-server-element>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control
+        (intervalFired)="OnIntervalFired($event)"
+        [oddNum]="oddNumbers"
+        [evenNum]="evenNumbers">
+      </app-game-control>
+    </div>
+  </div>
 </div>

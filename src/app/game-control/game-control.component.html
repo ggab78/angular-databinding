@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onStart()">start</button>
+      <button class="btn btn-primary" (click)="OnPauseGame()">stop</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6">
+      <hr>
+      <app-odd *ngFor="let number of oddNum">{{number}}</app-odd>
+    </div>
+    <div class="col-xs-6">
+      <hr>
+      <app-even *ngFor="let number of evenNum">{{number}}</app-even>
+    </div>
+  </div>
+
+</div>
